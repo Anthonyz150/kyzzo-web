@@ -48,7 +48,7 @@ export default function Hero() {
         Kyzzo
       </h1>
       <p className="z-10 mt-4 text-xl font-light tracking-[0.6em] uppercase text-zinc-500">
-        Artiste & Producteurs
+        Artiste & Producteur
       </p>
       
       <div className="z-10 mt-12 flex gap-4">
