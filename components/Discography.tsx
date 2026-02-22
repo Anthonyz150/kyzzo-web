@@ -48,7 +48,7 @@ export default function Discography() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {songs.map((project) => (
           <Link
-            href={`/musique/${project.slug}`}
+            href={`/musique/${song.slug}`}
             key={project.id}
             className="group flex flex-col gap-5"
           >
