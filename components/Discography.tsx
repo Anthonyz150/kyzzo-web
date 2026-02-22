@@ -1,7 +1,7 @@
-"use client"; // Obligatoire pour utiliser les hooks React (state/effect)
+"use client";
 
 import { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabase'; // Importe le client qu'on a créé
+import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
 
 export default function Discography() {
@@ -11,9 +11,9 @@ export default function Discography() {
   useEffect(() => {
     async function getSongs() {
       const { data, error } = await supabase
-        .from('musiques') // Le nom de ta table Supabase
+        .from('musiques')
         .select('*')
-        .order('year', { ascending: false }); // Trie par année
+        .order('year', { ascending: false });
 
       if (data) setSongs(data);
       setLoading(false);
@@ -21,37 +21,62 @@ export default function Discography() {
     getSongs();
   }, []);
 
-  if (loading) return <div className="text-center py-20 text-white">Chargement du studio...</div>;
+  if (loading) return (
+    <div className="h-96 flex items-center justify-center text-zinc-500 font-mono tracking-widest animate-pulse">
+      CHARGEMENT DU STUDIO...
+    </div>
+  );
 
   return (
-    <section className="py-24 px-6 max-w-7xl mx-auto bg-black text-white">
-      <h2 className="text-4xl font-bold mb-12 tracking-tight">Discographie</h2>
+    // L'ID 'discography' permet au bouton du Hero de savoir où scroller
+    // 'scroll-mt-24' empêche le titre d'être collé en haut de l'écran après le scroll
+    <section 
+      id="discography" 
+      className="py-24 px-6 max-w-7xl mx-auto bg-black text-white scroll-mt-24"
+    >
+      <div className="flex items-end justify-between mb-12 border-b border-white/10 pb-6">
+        <div>
+          <h2 className="text-5xl font-black uppercase tracking-tighter">Discographie</h2>
+          <p className="text-zinc-500 text-xs uppercase tracking-[0.4em] mt-2">Dernières Releases & Productions</p>
+        </div>
+        <span className="text-zinc-700 font-mono text-sm hidden md:block">
+          {songs.length} PROJETS DISPONIBLES
+        </span>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {songs.map((project) => (
           <Link
-            href={`/musique/${project.slug}`} // On utilise le 'slug' de la base de données
+            href={`/musique/${project.slug}`}
             key={project.id}
-            className="group flex flex-col gap-4"
+            className="group flex flex-col gap-5"
           >
-            <div className="relative aspect-square bg-zinc-900 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all duration-500">
+            {/* Conteneur de l'image avec effet Glassmorphism sur le hover */}
+            <div className="relative aspect-square bg-zinc-900 rounded-3xl overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-700 shadow-2xl">
               <img
-                src={project.cover_url} // URL venant de Supabase
+                src={project.cover_url}
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-700 scale-100 group-hover:scale-110 blur-0 group-hover:blur-[2px]"
               />
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <span className="border border-white text-white px-6 py-2 rounded-full font-bold text-sm tracking-widest uppercase">
-                  Voir Détails
+              
+              {/* Overlay qui apparaît au survol */}
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-[2px]">
+                <span className="bg-white text-black px-8 py-3 rounded-full font-black text-xs tracking-[0.2em] uppercase transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  Découvrir
                 </span>
               </div>
             </div>
 
-            <div>
-              <h3 className="text-xl font-semibold text-white group-hover:text-zinc-300 transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-zinc-500">{project.year}</p>
+            <div className="space-y-1 px-2">
+              <div className="flex justify-between items-center">
+                <h3 className="text-2xl font-bold text-white group-hover:text-zinc-400 transition-colors tracking-tight">
+                  {project.title}
+                </h3>
+                <span className="text-[10px] font-mono text-zinc-600 bg-zinc-900 px-2 py-1 rounded">
+                  {project.year}
+                </span>
+              </div>
+              <p className="text-zinc-500 text-[10px] uppercase tracking-widest">Single / Album</p>
             </div>
           </Link>
         ))}
