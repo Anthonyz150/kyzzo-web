@@ -13,7 +13,7 @@ export default function Discography() {
       const { data, error } = await supabase
         .from('musiques')
         .select('*')
-        .eq('type', 'album') // <--- AJOUTE CETTE LIGNE ICI
+        .eq('type', 'album') 
         .order('year', { ascending: false });
   
       if (data) setSongs(data);
@@ -29,8 +29,6 @@ export default function Discography() {
   );
 
   return (
-    // L'ID 'discography' permet au bouton du Hero de savoir où scroller
-    // 'scroll-mt-24' empêche le titre d'être collé en haut de l'écran après le scroll
     <section 
       id="discography" 
       className="py-24 px-6 max-w-7xl mx-auto bg-black text-white scroll-mt-24"
@@ -48,11 +46,11 @@ export default function Discography() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {songs.map((project) => (
           <Link
-            href={`/musique/${song.slug}`}
+            // ICI : On utilise project.slug et le préfixe /album/
+            href={`/album/${project.slug}`}
             key={project.id}
             className="group flex flex-col gap-5"
           >
-            {/* Conteneur de l'image avec effet Glassmorphism sur le hover */}
             <div className="relative aspect-square bg-zinc-900 rounded-3xl overflow-hidden border border-white/5 group-hover:border-white/20 transition-all duration-700 shadow-2xl">
               <img
                 src={project.cover_url}
@@ -60,7 +58,6 @@ export default function Discography() {
                 className="w-full h-full object-cover transition-transform duration-700 scale-100 group-hover:scale-110 blur-0 group-hover:blur-[2px]"
               />
               
-              {/* Overlay qui apparaît au survol */}
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-[2px]">
                 <span className="bg-white text-black px-8 py-3 rounded-full font-black text-xs tracking-[0.2em] uppercase transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                   Découvrir
@@ -77,7 +74,7 @@ export default function Discography() {
                   {project.year}
                 </span>
               </div>
-              <p className="text-zinc-500 text-[10px] uppercase tracking-widest">Single / Album</p>
+              <p className="text-zinc-500 text-[10px] uppercase tracking-widest">{project.type}</p>
             </div>
           </Link>
         ))}
