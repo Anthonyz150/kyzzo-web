@@ -1,8 +1,6 @@
 // app/page.tsx
 import Hero from '../components/Hero';
 import Discography from '../components/Discography';
-// Tu peux supprimer l'import suivant s'il n'est plus utilisé ailleurs
-// import Links from '../components/Links'; 
 import Link from 'next/link';
 
 export default function Home() {
@@ -10,14 +8,18 @@ export default function Home() {
     <main className="min-h-screen bg-black">
       <Hero />
       <Discography />
-      
-      {/* On a retiré <Links /> ici pour épurer le bas de page */}
 
-      {/* --- LE BOUTON ADMIN --- */}
-      <footer className="py-12 flex justify-center border-t border-white/5">
+      {/* --- FOOTER AVEC TOUS DROITS RÉSERVÉS --- */}
+      <footer className="py-16 flex flex-col items-center gap-6 border-t border-white/5">
+        <div className="text-center">
+          <p className="text-zinc-600 text-[10px] uppercase tracking-[0.4em]">
+            © 2026 KYZZO MUSIC - TOUS DROITS RÉSERVÉS
+          </p>
+        </div>
+
         <Link 
           href="/admin" 
-          className="text-zinc-500 hover:text-white text-[10px] uppercase tracking-[0.3em] transition-all duration-300"
+          className="text-zinc-700 hover:text-white text-[9px] uppercase tracking-[0.2em] transition-all duration-500 italic"
         >
           Accès Administration
         </Link>
