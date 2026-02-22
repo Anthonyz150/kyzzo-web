@@ -1,7 +1,8 @@
 // app/page.tsx
 import Hero from '../components/Hero';
 import Discography from '../components/Discography';
-import Links from '../components/Links';
+// Tu peux supprimer l'import suivant s'il n'est plus utilisé ailleurs
+// import Links from '../components/Links'; 
 import Link from 'next/link';
 
 export default function Home() {
@@ -9,9 +10,10 @@ export default function Home() {
     <main className="min-h-screen bg-black">
       <Hero />
       <Discography />
-      <Links />
+      
+      {/* On a retiré <Links /> ici pour épurer le bas de page */}
 
-      {/* --- LE BOUTON ADMIN EST ICI --- */}
+      {/* --- LE BOUTON ADMIN --- */}
       <footer className="py-12 flex justify-center border-t border-white/5">
         <Link 
           href="/admin" 
