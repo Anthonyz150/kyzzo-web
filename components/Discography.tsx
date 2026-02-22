@@ -13,8 +13,9 @@ export default function Discography() {
       const { data, error } = await supabase
         .from('musiques')
         .select('*')
+        .eq('type', 'album') // <--- AJOUTE CETTE LIGNE ICI
         .order('year', { ascending: false });
-
+  
       if (data) setSongs(data);
       setLoading(false);
     }
