@@ -47,7 +47,7 @@ export default function Discography() {
         {songs.map((project) => (
           <Link
             // ICI : On utilise project.slug et le préfixe /album/
-            href={`/album/${project.slug}`}
+            href={/album/${project.slug}}
             key={project.id}
             className="group flex flex-col gap-5"
           >
