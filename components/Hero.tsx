@@ -60,11 +60,11 @@ export default function Hero() {
     <section className="relative h-[85vh] flex flex-col items-center justify-center text-center bg-black text-white overflow-hidden">
       
       {/* Background Image avec Overlay */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 bg-black/60 z-0" />
         <img 
           src="/kyzzo-photo-de-profile.png" // <--- Remplace par le chemin de ton image
           alt="Kyzzo Background"
-          className="w-full h-full object-cover opacity-50"
+          className="w-full h-full object-cover blur-[2px]"
         />
         {/* Dégradé pour fondre l'image dans le noir en bas et adoucir le haut */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
@@ -74,11 +74,14 @@ export default function Hero() {
       <div className="absolute w-[600px] h-[600px] bg-white/5 rounded-full blur-[140px] animate-pulse" />
 
       {/* Title */}
-      <h1 className="z-10 text-8xl md:text-9xl font-black tracking-tighter uppercase drop-shadow-2xl">
-        Kyzzo
+      <h1 
+      className="z-10 text-8xl md:text-9xl font-black tracking-tighter uppercase"
+      style={{ textShadow: '0 10px 30px rgba(0,0,0,0.8)' }}
+      >
+       Kyzzo
       </h1>
 
-      <p className="z-10 mt-4 text-lg md:text-xl font-light tracking-[0.6em] uppercase text-zinc-300 drop-shadow-md">
+      <p className="z-10 mt-4 text-lg md:text-xl font-medium tracking-[0.3em] uppercase text-white/90 drop-shadow-lg">
         Artiste & Producteur
       </p>
 
