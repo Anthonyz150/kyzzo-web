@@ -95,7 +95,7 @@ export default function Hero() {
           onClick={() => setShowContact(true)}
           className="px-10 py-3 border border-white/20 backdrop-blur-sm rounded-full font-bold transition-all hover:bg-white/10 hover:scale-105"
         >
-          Contact & Plateformes
+          Plateformes
         </button>
       </div>
 
