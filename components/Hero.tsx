@@ -58,27 +58,29 @@ export default function Hero() {
 
   return (
     <section className="relative h-[85vh] flex flex-col items-center justify-center text-center bg-black text-white overflow-hidden">
-      
-      {/* Background Image avec Overlay */}
-      <div className="absolute inset-0 bg-black/60 z-0" />
-        <img 
-          src="/kyzzo-photo-de-profile.png" // <--- Remplace par le chemin de ton image
+
+      {/* Background Image Container - CORRIGÉ ICI */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/kyzzo-photo-de-profile.png"
           alt="Kyzzo Background"
-          className="w-full h-full object-cover blur-[2px]"
+          className="w-full h-full object-cover blur-[2px] opacity-70"
         />
-        {/* Dégradé pour fondre l'image dans le noir en bas et adoucir le haut */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
+        {/* Overlay sombre pour la lisibilité */}
+        <div className="absolute inset-0 bg-black/50" />
+        {/* Dégradé bas de page */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black" />
       </div>
 
-      {/* Glow background (ajusté pour ne pas trop polluer l'image) */}
-      <div className="absolute w-[600px] h-[600px] bg-white/5 rounded-full blur-[140px] animate-pulse" />
+      {/* Glow background */}
+      <div className="absolute w-[600px] h-[600px] bg-white/5 rounded-full blur-[140px] animate-pulse pointer-events-none" />
 
       {/* Title */}
-      <h1 
-      className="z-10 text-8xl md:text-9xl font-black tracking-tighter uppercase"
-      style={{ textShadow: '0 10px 30px rgba(0,0,0,0.8)' }}
+      <h1
+        className="z-10 text-8xl md:text-9xl font-black tracking-tighter uppercase"
+        style={{ textShadow: '0 10px 40px rgba(0,0,0,1)' }}
       >
-       Kyzzo
+        Kyzzo
       </h1>
 
       <p className="z-10 mt-4 text-lg md:text-xl font-medium tracking-[0.3em] uppercase text-white/90 drop-shadow-lg">
@@ -86,7 +88,7 @@ export default function Hero() {
       </p>
 
       {/* Buttons */}
-      <div className="z-10 mt-14 flex gap-4">
+      <div className="z-10 mt-14 flex flex-wrap justify-center gap-4">
         <button
           onClick={scrollToDiscography}
           className="px-10 py-3 bg-white text-black font-bold rounded-full transition-all hover:scale-105 hover:bg-zinc-200 shadow-lg"
@@ -102,7 +104,7 @@ export default function Hero() {
         </button>
       </div>
 
-      {/* Modal - Identique au tien */}
+      {/* Modal */}
       {showContact && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/95 backdrop-blur-md">
           <div className="relative bg-zinc-900 border border-white/10 p-8 rounded-3xl max-w-sm w-full animate-in zoom-in duration-300">
