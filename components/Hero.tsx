@@ -64,7 +64,7 @@ export default function Hero() {
         <img 
           src="/kyzzo-photo-de-profile.png" // <--- Remplace par le chemin de ton image
           alt="Kyzzo Background"
-          className="w-full h-full object-cover opacity-40 grayscale" // "grayscale" pour le style, à retirer si tu veux de la couleur
+          className="w-full h-full object-cover opacity-50"
         />
         {/* Dégradé pour fondre l'image dans le noir en bas et adoucir le haut */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
