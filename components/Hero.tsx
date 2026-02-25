@@ -58,15 +58,27 @@ export default function Hero() {
 
   return (
     <section className="relative h-[85vh] flex flex-col items-center justify-center text-center bg-black text-white overflow-hidden">
-      {/* Glow background */}
+      
+      {/* Background Image avec Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/kyzzo-photo-de-profile.png" // <--- Remplace par le chemin de ton image
+          alt="Kyzzo Background"
+          className="w-full h-full object-cover opacity-40 grayscale" // "grayscale" pour le style, à retirer si tu veux de la couleur
+        />
+        {/* Dégradé pour fondre l'image dans le noir en bas et adoucir le haut */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
+      </div>
+
+      {/* Glow background (ajusté pour ne pas trop polluer l'image) */}
       <div className="absolute w-[600px] h-[600px] bg-white/5 rounded-full blur-[140px] animate-pulse" />
 
       {/* Title */}
-      <h1 className="z-10 text-8xl md:text-9xl font-black tracking-tighter uppercase">
+      <h1 className="z-10 text-8xl md:text-9xl font-black tracking-tighter uppercase drop-shadow-2xl">
         Kyzzo
       </h1>
 
-      <p className="z-10 mt-4 text-lg md:text-xl font-light tracking-[0.6em] uppercase text-zinc-500">
+      <p className="z-10 mt-4 text-lg md:text-xl font-light tracking-[0.6em] uppercase text-zinc-300 drop-shadow-md">
         Artiste & Producteur
       </p>
 
@@ -74,20 +86,20 @@ export default function Hero() {
       <div className="z-10 mt-14 flex gap-4">
         <button
           onClick={scrollToDiscography}
-          className="px-10 py-3 bg-white text-black font-bold rounded-full transition-all hover:scale-105 hover:bg-zinc-200"
+          className="px-10 py-3 bg-white text-black font-bold rounded-full transition-all hover:scale-105 hover:bg-zinc-200 shadow-lg"
         >
-          Dernier Release
+          Dernier Album
         </button>
 
         <button
           onClick={() => setShowContact(true)}
-          className="px-10 py-3 border border-white/20 rounded-full font-bold transition-all hover:bg-white/10 hover:scale-105"
+          className="px-10 py-3 border border-white/20 backdrop-blur-sm rounded-full font-bold transition-all hover:bg-white/10 hover:scale-105"
         >
           Contact & Plateformes
         </button>
       </div>
 
-      {/* Modal */}
+      {/* Modal - Identique au tien */}
       {showContact && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/95 backdrop-blur-md">
           <div className="relative bg-zinc-900 border border-white/10 p-8 rounded-3xl max-w-sm w-full animate-in zoom-in duration-300">
