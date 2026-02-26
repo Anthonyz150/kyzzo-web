@@ -1,9 +1,9 @@
 export default function Links() {
   const socials = [
-    { name: "Instagram", url: "#", color: "hover:text-pink-500" },
-    { name: "YouTube", url: "#", color: "hover:text-red-600" },
-    { name: "TikTok", url: "#", color: "hover:text-cyan-400" },
-    { name: "Spotify", url: "#", color: "hover:text-green-500" },
+    { name: "AppleMusic", url: "https://music.apple.com/fr/artist/kyzzo/1518082587", color: "hover:text-pink-500" },
+    { name: "YouTube", url: "https://www.youtube.com/@Kyyzzo", color: "hover:text-red-600" },
+    { name: "TikTok", url: "https://www.tiktok.com/@kyyzzo06", color: "hover:text-cyan-400" },
+    { name: "Spotify", url: "https://open.spotify.com/intl-fr/artist/6NMoQfI3m6XryDbWDJCmg3?si=CnMMSkBoRYGGJiNazR2hjg", color: "hover:text-green-500" },
   ];
 
   return (
