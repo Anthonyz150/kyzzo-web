@@ -59,17 +59,16 @@ export default function Hero() {
   return (
     <section className="relative h-[85vh] flex flex-col items-center justify-center text-center bg-black text-white overflow-hidden">
 
-      {/* Background Image Container - CORRIGÉ ICI */}
       <div className="absolute inset-0 z-0">
         <img
           src="/kyzzo-photo-de-profile.png"
-          alt="Kyzzo Background"
-          className="w-full h-full object-cover blur-[2px] opacity-70"
+          className="w-full h-full object-cover blur-[1px] opacity-60"
+          alt="Background"
         />
-        {/* Overlay sombre pour la lisibilité */}
-        <div className="absolute inset-0 bg-black/50" />
-        {/* Dégradé bas de page */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black" />
+        {/* Overlay Radial : Noir au centre, plus clair sur les bords */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(0,0,0,0.7)_0%,_transparent_100%)]" />
+        {/* Dégradé de sortie vers le bas */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black" />
       </div>
 
       {/* Glow background */}
