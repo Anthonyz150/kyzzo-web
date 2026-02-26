@@ -14,7 +14,7 @@ export default function MusicPlayer() {
         <div className="relative group shadow-[0_0_50px_rgba(255,255,255,0.05)] rounded-2xl overflow-hidden">
           <iframe 
             className="rounded-2xl transition-all duration-500"
-            src="https://open.spotify.com/embed/track/TON_ID_ICI" // Assure-toi que c'est bien l'URL d'intégration (embed)
+            src="https://open.spotify.com/embed/track/3uU9zIfpLaQWbRe2xHoApX?utm_source=generator" // Assure-toi que c'est bien l'URL d'intégration (embed)
             width="100%" 
             height="152" 
             frameBorder="0" 
